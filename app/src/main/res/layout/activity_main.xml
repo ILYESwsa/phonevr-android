@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- GL Surface (video output) -->
+    <android.opengl.GLSurfaceView
+        android:id="@+id/glSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Connection UI (glassmorphism overlay) -->
+    <FrameLayout
+        android:id="@+id/layoutConnect"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC000000">
+
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:background="@drawable/glass_card"
+            android:elevation="8dp">
+
+            <!-- Logo / Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="PhoneVR"
+                android:textSize="32sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="PC VR over WiFi / USB"
+                android:textSize="13sp"
+                android:textColor="#99FFFFFF"
+                android:layout_marginBottom="32dp" />
+
+            <!-- IP Input -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PC IP ADDRESS"
+                android:textSize="11sp"
+                android:textColor="#88FFFFFF"
+                android:letterSpacing="0.15"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etPcIp"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="192.168.1.x"
+                android:hintTextColor="#55FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:inputType="textUri"
+                android:background="@drawable/glass_input"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Connect button -->
+            <Button
+                android:id="@+id/btnConnect"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="CONNECT"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:letterSpacing="0.1"
+                android:background="@drawable/glass_button_accent"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Status -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Enter your PC's local IP and tap Connect"
+                android:textSize="12sp"
+                android:textColor="#88FFFFFF"
+                android:gravity="center" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- VR HUD (shown when connected) -->
+    <LinearLayout
+        android:id="@+id/layoutVr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnRecenter"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Recenter"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:background="@drawable/glass_button_small"
+            android:layout_marginEnd="16dp" />
+
+        <Button
+            android:id="@+id/btnDisconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Disconnect"
+            android:textColor="#FFCCCC"
+            android:textSize="12sp"
+            android:background="@drawable/glass_button_small" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="11sp"
+            android:textColor="#88FFFFFF"
+            android:layout_marginStart="16dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
