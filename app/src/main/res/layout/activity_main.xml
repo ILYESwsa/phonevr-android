@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!-- GL Surface (video output) -->
+    <!-- GL Surface (video output, always behind everything) -->
     <android.opengl.GLSurfaceView
         android:id="@+id/glSurfaceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- Connection UI (glassmorphism overlay) -->
+    <!-- ── Connection UI ────────────────────────────────────────────────── -->
     <FrameLayout
         android:id="@+id/layoutConnect"
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:background="@drawable/glass_card"
             android:elevation="8dp">
 
-            <!-- Logo / Title -->
+            <!-- Logo -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,18 +36,29 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:letterSpacing="0.1"
-                android:layout_marginBottom="4dp" />
+                android:layout_marginBottom="4dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="PC VR over WiFi / USB"
+                android:text="PC VR · USB or WiFi"
                 android:textSize="13sp"
                 android:textColor="#99FFFFFF"
-                android:layout_marginBottom="32dp" />
+                android:layout_marginBottom="8dp"/>
 
-            <!-- IP Input -->
+            <!-- Phone IP hint -->
+            <TextView
+                android:id="@+id/tvPhoneIp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textSize="11sp"
+                android:textColor="#6688BBFF"
+                android:visibility="gone"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- PC IP input -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,22 +66,38 @@
                 android:textSize="11sp"
                 android:textColor="#88FFFFFF"
                 android:letterSpacing="0.15"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"/>
 
             <EditText
                 android:id="@+id/etPcIp"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:hint="192.168.1.x"
-                android:hintTextColor="#55FFFFFF"
+                android:hint="192.168.1.x  (or auto via USB)"
+                android:hintTextColor="#44FFFFFF"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:inputType="textUri"
                 android:background="@drawable/glass_input"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Transport indicator -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔌 USB auto-detected  /  📡 WiFi fallback"
+                    android:textSize="11sp"
+                    android:textColor="#66FFFFFF"/>
+            </LinearLayout>
 
             <!-- Connect button -->
             <Button
@@ -82,7 +109,7 @@
                 android:textSize="14sp"
                 android:letterSpacing="0.1"
                 android:background="@drawable/glass_button_accent"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="12dp"/>
 
             <!-- Status -->
             <TextView
@@ -90,15 +117,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Enter your PC's local IP and tap Connect"
+                android:text="USB: plug in phone. WiFi: same network as PC."
                 android:textSize="12sp"
                 android:textColor="#88FFFFFF"
-                android:gravity="center" />
+                android:gravity="center"/>
 
         </LinearLayout>
     </FrameLayout>
 
-    <!-- VR HUD (shown when connected) -->
+    <!-- ── VR HUD (shown when connected) ─────────────────────────────────── -->
     <LinearLayout
         android:id="@+id/layoutVr"
         android:layout_width="match_parent"
@@ -113,20 +140,20 @@
             android:id="@+id/btnRecenter"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Recenter"
+            android:text="⟳ Recenter"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:background="@drawable/glass_button_small"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"/>
 
         <Button
             android:id="@+id/btnDisconnect"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Disconnect"
+            android:text="✕ Disconnect"
             android:textColor="#FFCCCC"
             android:textSize="12sp"
-            android:background="@drawable/glass_button_small" />
+            android:background="@drawable/glass_button_small"/>
 
         <TextView
             android:id="@+id/tvStatus"
@@ -135,7 +162,7 @@
             android:text=""
             android:textSize="11sp"
             android:textColor="#88FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"/>
 
     </LinearLayout>
 
